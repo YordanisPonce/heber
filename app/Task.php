@@ -1,0 +1,12 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Task extends Model
+{
+    protected $fillable = [
+        'name', 'id_degree', 'operation', 'pages', 'figure_1', 'figure_2', 'figure_3', 'figure_4', 'description', 'photo', 'status'
+    ];
+}

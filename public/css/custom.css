@@ -1,0 +1,248 @@
+#tittle {
+    background-color: #60E85C;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: gray;
+    padding: .3em;
+}
+
+#operations {
+    margin: auto;
+    margin-top: 25px;
+    width: 80%;
+    border-style: solid;
+    border-color: 60E85C;
+    border-radius: 20px;
+    box-shadow: gray 10px 10px 10px;
+}
+
+#operations .row {
+    border-bottom-style: solid;
+    border-color: gray;
+    margin: 45px;
+}
+
+#figures .row {
+    border-style: none;
+    margin: 0;
+}
+
+.button, .button:hover, .button:focus {
+    border-style: solid;
+    border-color: black;
+    color: white;
+    font-size: 18px;
+    box-shadow: black inset -5px -5px 10px;
+}
+
+#exercises {
+    width: 90%;
+    margin: auto;
+    margin-top: 25px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.multiplication {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+    border-style: solid;
+    border-color: gray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#operation hr {
+    background-color: black;
+    width: 100%;
+    float: right;
+}
+
+#operation p {
+    margin: auto;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+span {
+    float: left;
+    margin-left: 15px;
+}
+
+.resulset {
+    width: 8%;
+    float: right;
+    background-color: aqua;
+    border-color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.resulset2 {
+    padding: 0px;
+    width: 15%;
+    float: left;
+    background-color: aqua;
+    border-color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+@media(max-width:375px) {
+    #divAnswers .resulset2 {
+        width: 10%;
+        padding: 0px;
+    }
+}
+
+@media(max-width:700px) {
+    #divAnswers .resulset2 {
+        width: 10%;
+        padding: 0px;
+    }
+}
+
+@media(max-width:360px) {
+    .resulset {
+        padding: 0px;
+        width: 2%;
+    }
+    #divAnswers .resulset2 {
+        width: 10%;
+        padding: 0px;
+    }
+}
+
+#counter {
+    font-size: 28px;
+}
+
+.text-footer {
+    font-size: 18px;
+}
+
+.offset-1 hr, .color {
+    background-color: rgb(141, 63, 35);
+    opacity: 0.5;
+}
+
+@media(max-width:360px) {
+    .resulset {
+        padding: 0px;
+        width: 2%;
+    }
+}
+
+@media(max-width:768px) {
+    .resulset {
+        padding: 0px;
+        width: 6%;
+    }
+}
+
+#text_modal {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fontType {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+table#tableDivision {
+    width: 30%;
+    margin: auto;
+    font-size: 20px;
+}
+
+@media(max-width:768px) {
+    table#tableDivision {
+        width: 70%;
+    }
+}
+
+td.tableDivision {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+.custom {
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.customCol {
+    border-radius: 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#question {
+    border-radius: 15px;
+    cursor: default;
+}
+
+p.drag {
+    font-size: 10px;
+    
+}
+
+.drag:hover {
+    cursor: move;
+}
+
+.drag:active {
+    cursor: pointer;
+}
+
+.forDragg {
+    background-color: aqua;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    width: 20%;
+    transition: background-color .5s;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+@media(max-width:768px) {
+    .forDragg {
+        width: 50%;
+
+    }
+}
+@media(max-width:700px) {
+    .forDragg {
+        width: 40%;
+
+    }
+}
+@media(max-width:500px) {
+    .forDragg {
+        width: 40%;
+
+    }
+}
+@media(max-width:390px) {
+    .forDragg {
+        margin-top: 15px;
+    }
+}
