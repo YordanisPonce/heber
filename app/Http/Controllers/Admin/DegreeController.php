@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Degree;
+use Illuminate\Http\Response;
 
 class DegreeController extends Controller
 {
@@ -27,22 +28,22 @@ class DegreeController extends Controller
         $data['objNames'] = $this->objNames;
         $data['controller'] = $this->controller;
         $data['active_menu'] = $this->cName;
-        return view($this->vUrl.'.index', $data);
+        return view($this->vUrl . '.index', $data);
     }
 
     public function add(Request $request)
     {
-        if($request->method() === 'POST'){
+        if ($request->method() === 'POST') {
             $validator = Validator::make($request->post(), [
                 'name' => 'required',
             ], [
                 'name.required' => 'El nombre es requerido',
             ]);
-            if($validator->fails()){
+            if ($validator->fails()) {
                 return redirect($this->controller)->with('form_errors', 'Hay errores en los valores del formulario');
             }
             $params = $request->post();
-            if($request->hasFile('photo') && $request->file('photo')->isValid()){
+            if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
                 $params['photo'] = $request->file('photo')->store($this->uploads, 'public');
             }
             Degree::create($params);
@@ -54,23 +55,23 @@ class DegreeController extends Controller
         $data['controller'] = $this->controller;
         $data['active_menu'] = $this->cName;
 
-        return view($this->vUrl.'.add', $data);
+        return view($this->vUrl . '.add', $data);
     }
 
     public function edit(Request $request, $id = '')
     {
         $o = Degree::findOrFail($id);
-        if($request->method() === 'POST'){
+        if ($request->method() === 'POST') {
             $validator = Validator::make($request->post(), [
                 'name' => 'required',
             ], [
                 'name.required' => 'El nombre es requerido',
             ]);
-            if($validator->fails()){
+            if ($validator->fails()) {
                 return redirect($this->controller)->with('form_errors', 'Hay errores en los valores del formulario');
             }
             $params = $request->post();
-            if($request->hasFile('photo') && $request->file('photo')->isValid()){
+            if ($request->hasFile('photo') && $request->file('photo')->isValid()) {
                 $params['photo'] = $request->file('photo')->store($this->uploads, 'public');
             }
             $o->update($params);
@@ -82,7 +83,7 @@ class DegreeController extends Controller
         $data['objNames'] = $this->objNames;
         $data['controller'] = $this->controller;
         $data['active_menu'] = $this->cName;
-        return view($this->vUrl.'.edit', $data);
+        return view($this->vUrl . '.edit', $data);
     }
 
     public function delete($id = '')
@@ -95,7 +96,7 @@ class DegreeController extends Controller
     public function change($id = '')
     {
         $o = Degree::findOrFail($id);
-        $o->status = ($o->status=='active')?'inactive':'active';
+        $o->status = ($o->status == 'active') ? 'inactive' : 'active';
         $o->save();
         return redirect($this->controller)->with('form_success', 'Enahorabuena!! ' . $this->genClass . ' ' . $this->objName . ' ha sido modificad' . $this->disClass . ' correctamente');
     }

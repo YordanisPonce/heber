@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Notifications\FamiliarNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
 
 class User extends Authenticatable
 {
@@ -39,5 +41,12 @@ class User extends Authenticatable
     public function familiars()
     {
         return $this->hasMany(Familiar::class, 'id_user');
+    }
+
+    public function notifyFamiliar()
+    {
+        $this->familiars()->get()->each(function (Familiar $familiar) {
+            $familiar->notify(new FamiliarNotification);
+        });
     }
 }

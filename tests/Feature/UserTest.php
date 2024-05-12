@@ -51,29 +51,24 @@ class UserTest extends TestCase
         $response->assertStatus(302);
     }
 
-    public function testUpdateUserWithAdminRole()
+/*     public function testUpdateUserWithAdminRole()
     {
-        /*   $response = $this->post('/register', []);
-          $response->assertSessionHasErrors(); */
+       
     }
 
     public function testUpdateUserWithNotAdminRole()
     {
-        /*   $response = $this->post('/register', []);
-          $response->assertSessionHasErrors(); */
+       
     }
 
     public function testShowUser()
     {
-        /*    $response = $this->post('/register', []);
-           $response->assertSessionHasErrors(); */
+        
     }
 
     public function testDeleteUser()
     {
 
 
-        /*     $response = $this->post('/register', []);
-            $response->assertSessionHasErrors(); */
-    }
+    } */
 }

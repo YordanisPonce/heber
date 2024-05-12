@@ -20,7 +20,7 @@ abstract class TestCase extends BaseTestCase
     protected $index = '/';
     protected $add = '/add';
     protected $edit = '/edit';
-    protected $destroy = '/edit';
+    protected $destroy = '/delete';
 
     protected function setUp(): void
     {

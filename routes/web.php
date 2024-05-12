@@ -92,3 +92,4 @@ Route::get('admin/student/change/{id}', 'Admin\StudentController@change')->middl
 
 Route::get('admin/report', 'Admin\ReportController@index')->middleware(['auth', 'teacher', 'idtask']);
 Route::post('admin/report', 'Admin\ReportController@index')->middleware(['auth', 'teacher', 'idtask']);
+Route::post('admin/report/notify', 'Admin\ReportController@notify')->middleware(['auth', 'teacher', 'idtask']);
