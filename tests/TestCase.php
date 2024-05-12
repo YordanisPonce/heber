@@ -17,12 +17,18 @@ abstract class TestCase extends BaseTestCase
     protected $teacher = null;
     protected $student = null;
 
+    protected $index = '/';
+    protected $add = '/add';
+    protected $edit = '/edit';
+    protected $destroy = '/edit';
+
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->credentials = [
-            'email' => 'admin@admin.com',
-            'password' => 'admin',
+            'email' => 'admin1@heber.com',
+            'password' => 'password',
         ];
 
         $this->admin = factory(User::class)->create([

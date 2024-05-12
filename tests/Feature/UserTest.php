@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Helpers\RoleHelper;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
@@ -11,7 +12,6 @@ class UserTest extends TestCase
 {
 
     private $baseUrl = '/admin/user';
-    private $index = '/';
     /**
      * A basic feature test example.
      *
@@ -27,29 +27,37 @@ class UserTest extends TestCase
     public function testGetUsersPageWithNotAdminRole()
     {
         $response = $this->actingAs($this->teacher)->get($this->baseUrl);
-        $response->assertStatus(Response::HTTP_PERMANENTLY_REDIRECT);
+        $response->assertStatus(302);
     }
 
-    /*   public function testGetCreateUserPageWithAdminRole()
-      {
-          $response = $this->actingAs($this->admin)->get('/users');
-      }
+    public function testCreateUserWithAdminRole()
+    {
+        $response = $this->actingAs($this->admin)->post($this->baseUrl . $this->add, [
+            'email' => 'teacher2@heber.com',
+            'name' => 'HeberTeacher',
+            'password' => 'heber',
+            'role' => RoleHelper::TEACHER,
+        ]);
+        $response->assertStatus(Response::HTTP_CREATED);
+    }
+    public function testCreateUserWithNotAdminRole()
+    {
+        $response = $this->actingAs($this->student)->post($this->baseUrl . $this->add, [
+            'email' => 'teacher2@heber.com',
+            'name' => 'HeberTeacher',
+            'password' => 'heber',
+            'role' => RoleHelper::TEACHER,
+        ]);
+        $response->assertStatus(302);
+    }
 
-      public function testGetCreateUserPageWithNotAdminRole()
-      {
-          $response = $this->actingAs($this->admin)->post('/users');
-      }
-      public function testCreateUserWithAdminRole()
-      {
-          $response = $this->actingAs($this->admin)->post('/users');
-      }
+    public function testUpdateUserWithAdminRole()
+    {
+        /*   $response = $this->post('/register', []);
+          $response->assertSessionHasErrors(); */
+    }
 
-      public function testCreateUserWithNotAdminRole()
-      {
-          $response = $this->actingAs($this->admin)->post('/users');
-      }
-   */
-    public function testUpdateUser()
+    public function testUpdateUserWithNotAdminRole()
     {
         /*   $response = $this->post('/register', []);
           $response->assertSessionHasErrors(); */
