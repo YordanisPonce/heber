@@ -33,7 +33,7 @@
                                 <td>{{ ($key+1) }}</td>
                                 <td>{{ $value->name }}</td>
                                 <td>{{ $value->email }}</td>
-                                <td>{{ $degree->name }}</td>
+                                <td>{{ $degree->name ?? 'No definido' }}</td>
                                 <td>
                                     <img src="/storage/{{ $value->photo }}" style="height: 100px; width: 140px;">
                                 </td>

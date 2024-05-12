@@ -15,8 +15,10 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->integer('id_task')->nullable();
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_task');
+            $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('id_task')->references('id')->on('tasks')->cascadeOnDelete();
             $table->string('operation');
             $table->string('pages');
             $table->string('correctAnswer');

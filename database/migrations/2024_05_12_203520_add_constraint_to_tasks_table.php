@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDegreesTable extends Migration
+class AddConstraintToTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateDegreesTable extends Migration
      */
     public function up()
     {
-        Schema::create('degrees', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('photo')->nullable();
-            $table->string('status')->default('active');
-            $table->timestamps();
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->foreign('id_degree')->references('id')->on('degrees')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +25,8 @@ class CreateDegreesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('degrees');
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dropForeign(['id_degree']);
+        });
     }
 }

@@ -15,7 +15,8 @@ class CreateFamiliarsTable extends Migration
     {
         Schema::create('familiars', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete();
             $table->string('email')->nullable();
             $table->string('name')->nullable();
             $table->timestamps();
