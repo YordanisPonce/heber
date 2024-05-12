@@ -22,7 +22,7 @@ Route::get('/logout', function () {
 })->middleware('auth');
 
 Route::get('/', 'HomeController@index')->middleware(['idtask'])->name('index');
-Route::redirect('/home', '/')->middleware(['auth', 'idtask']);
+Route::redirect('/home', '/')->name('home')->middleware(['auth', 'idtask']);
 
 Route::get('/task', 'TaskController@index')->middleware(['auth', 'idtask']);
 

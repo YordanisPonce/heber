@@ -1,5 +1,7 @@
 <?php
 
+use App\Helpers\RoleHelper;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        factory(User::class)->create(['email' => 'admin@admin.com', 'password' => Hash::make('admin'), 'role' => RoleHelper::ADMIN]);
+        factory(User::class)->create(['email' => 'teacher@heber.com', 'password' => Hash::make('tttttttt'), 'role' => RoleHelper::TEACHER]);
+        factory(User::class)->create(['email' => 'student@heber.com', 'password' => Hash::make('ssssssss')]);
     }
 }

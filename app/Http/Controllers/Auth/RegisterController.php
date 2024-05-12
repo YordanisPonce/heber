@@ -18,6 +18,7 @@ class RegisterController extends Controller
     private $cName = 'register';
     private $vUrl = 'front.home';
     private $controller = 'home';
+
     /*
     |--------------------------------------------------------------------------
     | Register Controller

@@ -52,4 +52,6 @@ class LoginController extends Controller
         $data['active_menu'] = $this->cName;
         return view('auth.login', $data);
     }
+
+    
 }
