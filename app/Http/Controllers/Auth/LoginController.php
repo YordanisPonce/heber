@@ -8,6 +8,14 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+    private $genClass = 'El';
+    private $disClass = 'o';
+    private $objName = 'Login';
+    private $objNames = 'Login';
+    private $cName = 'logi';
+    private $vUrl = 'front.home';
+    private $controller = 'home';
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -36,5 +44,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function showLoginForm()
+    {
+        $data['title'] = $this->objNames;
+        $data['active_menu'] = $this->cName;
+        return view('auth.login', $data);
     }
 }

@@ -9,7 +9,7 @@ class HomeController extends Controller
     private $genClass = 'El';
     private $disClass = 'o';
     private $objName = 'Dashboard';
-    private $objNames = 'Dashboard';
+    private $objNames = 'Inicio';
     private $cName = 'home';
     private $vUrl = 'front.home';
     private $controller = 'home';

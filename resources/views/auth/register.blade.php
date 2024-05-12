@@ -62,8 +62,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5 offset-md-1">
-          <img src="{{ asset('images/login.webp') }}" alt="">
+        <div class="col-md-5 offset-md-1 order-first">
+          <img src="{{ asset('images/register (2).jpg') }}" alt="">
         </div>
     </div>
 </div>

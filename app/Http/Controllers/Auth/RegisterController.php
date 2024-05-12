@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    private $genClass = 'El';
+    private $disClass = 'o';
+    private $objName = 'Registro';
+    private $objNames = 'Registro';
+    private $cName = 'register';
+    private $vUrl = 'front.home';
+    private $controller = 'home';
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -69,5 +76,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    protected function showRegistrationForm()
+    {
+        $data['title'] = $this->objNames;
+        $data['active_menu'] = $this->cName;
+        return view('auth.register', $data);
     }
 }

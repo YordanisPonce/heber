@@ -16,13 +16,14 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/logout', function(){
+Route::get('/logout', function () {
     Auth::logout();
-    return redirect('login');
+    return redirect('/');
 })->middleware('auth');
 
-Route::get('/', 'HomeController@index')->middleware(['auth', 'idtask']);
-Route::get('/home', 'HomeController@index')->middleware(['auth', 'idtask']);
+Route::get('/', 'HomeController@index')->middleware(['idtask'])->name('index');
+Route::redirect('/home', '/')->middleware(['auth', 'idtask']);
+
 Route::get('/task', 'TaskController@index')->middleware(['auth', 'idtask']);
 
 Route::get('/game/{id}', 'GameController@index')->middleware('auth');
