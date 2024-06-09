@@ -22,6 +22,8 @@ Route::get('/logout', function () {
 })->middleware('auth');
 
 Route::get('/', 'HomeController@index')->middleware(['idtask'])->name('index');
+Route::get('/profile', 'HomeController@profile')->middleware(['idtask'])->name('user_profile');
+
 Route::redirect('/home', '/')->name('home')->middleware(['auth', 'idtask']);
 
 Route::get('/task', 'TaskController@index')->middleware(['auth', 'idtask']);

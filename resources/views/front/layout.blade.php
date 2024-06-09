@@ -21,7 +21,8 @@
         media="screen">
     <link href="{{ asset('assets/plugins/datatables/datatables/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <style>
-        input.form-control:focus {
+        input.form-control:focus,
+        select.form-control:focus {
             border: 1px solid rgba(128, 128, 128, 0.857) !important;
         }
     </style>
@@ -41,7 +42,10 @@
                             <div class="full">
                                 <div class="center-desk">
                                     <div class="logo">
-                                        <a href="{{ url('/') }}"><img src="images/logo.png" alt="#" /></a>
+                                        <a href="{{ url('/') }}" class="text-dark d-flex align-items-center"><img
+                                                src="images/logo.png" width="80" style="transform: scale(.7)"
+                                                alt="#" />
+                                            <span style="font-size: 24px">{{ config('app.name') }}</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -56,16 +60,18 @@
                                                     <li> <a href="{{ url('login') }}">Iniciar Sessi&oacute;n</a> </li>
                                                     <li> <a href="{{ url('register') }}">Registrarme</a> </li>
                                                 @else
-                                                    <li class="active"> <a href="{{ url('/') }}">Inicio</a> </li>
+                                                    <li class="{{ $active_menu == 'home' ? 'active' : '' }}"> <a
+                                                            href="{{ url('/') }}">Inicio</a> </li>
+                                                    <li class="{{ $active_menu == 'profile' ? 'active' : '' }}"> <a
+                                                            href="{{ url('profile') }}">Perfil</a> </li>
                                                     @if (Auth::user()->role == 'student')
                                                         <li> <a href="{{ url('task') }}">Tareas</a> </li>
                                                     @endif
+                                                    <li> <a href="{{ url('game') }}">Ejercicios</a> </li>
                                                     @if (Auth::user()->role == 'administrator' || Auth::user()->role == 'teacher')
                                                         <li> <a href="{{ url('admin') }}">Administraci&oacute;n</a> </li>
                                                     @endif
-                                                    <li> <a href="{{ url('game') }}">Ejercicios</a> </li>
                                                     <li> <a href="{{ url('logout') }}">Cerrar Sesi&oacute;n</a> </li>
-
                                                 @endguest
                                             </ul>
                                         </nav>

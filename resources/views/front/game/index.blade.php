@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h2 id="tittle">Crea operaciones matemáticas</h2>
+{{--     <h2 id="tittle">Crea operaciones matemáticas</h2> --}}
     <div class="containter-fluid" id="container">
         <div class="row" id="operations" <?php echo session()->has('id_task') ? 'style="display:none;"' :
             ''; ?>>

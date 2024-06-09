@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Degree;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,6 +20,15 @@ class HomeController extends Controller
     {
         $data['title'] = $this->objNames;
         $data['active_menu'] = $this->cName;
-        return view($this->vUrl.'.index', $data);
+        return view($this->vUrl . '.index', $data);
+    }
+
+
+    public function profile()
+    {
+        $data['title'] = $this->objNames;
+        $data['active_menu'] = 'profile';
+        $data['degrees'] = Degree::all();
+        return view($this->vUrl . '.profile', $data);
     }
 }

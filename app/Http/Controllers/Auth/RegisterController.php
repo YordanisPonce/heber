@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Degree;
+use App\Helpers\RoleHelper;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -59,6 +61,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'id_degree' => ['required', 'exists:degrees,id'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -75,6 +78,8 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'id_degree' => $data['id_degree'],
+            'role' => RoleHelper::STUDENT,
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -82,6 +87,7 @@ class RegisterController extends Controller
     {
         $data['title'] = $this->objNames;
         $data['active_menu'] = $this->cName;
+        $data['degrees'] = Degree::all();
         return view('auth.register', $data);
     }
 }
