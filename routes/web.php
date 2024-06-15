@@ -23,15 +23,14 @@ Route::get('/logout', function () {
 
 Route::get('/', 'HomeController@index')->middleware(['idtask'])->name('index');
 Route::get('/profile', 'HomeController@profile')->middleware(['idtask'])->name('user_profile');
+Route::post('/update-profile', 'HomeController@updateProfile')->middleware(['idtask'])->name('update_user_profile');
 
 Route::redirect('/home', '/')->name('home')->middleware(['auth', 'idtask']);
 
 Route::get('/task', 'TaskController@index')->middleware(['auth', 'idtask']);
 
 Route::get('/game/{id}', 'GameController@index')->middleware('auth');
-Route::get('/game', function () {
-    return view('front.game.index');
-})->middleware(['auth', 'idtask']);
+Route::get('/game', 'GameController@game')->middleware(['auth', 'idtask']);
 Route::get('/content', function () {
     return view("front.game.content");
 })->middleware('auth');

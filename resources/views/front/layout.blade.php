@@ -21,16 +21,23 @@
         media="screen">
     <link href="{{ asset('assets/plugins/datatables/datatables/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <style>
+        body,
+        html {
+            min-height: 100vh;
+        }
+
+
         input.form-control:focus,
         select.form-control:focus {
             border: 1px solid rgba(128, 128, 128, 0.857) !important;
         }
     </style>
+    @yield('css')
 </head>
 
-<body class="main-layout">
+<body class="main-layout h-100 d-flex flex-column">
     <div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+        <div class="loader"><img src="/images/loading.gif" alt="#" /></div>
     </div>
 
     <header>
@@ -43,7 +50,7 @@
                                 <div class="center-desk">
                                     <div class="logo">
                                         <a href="{{ url('/') }}" class="text-dark d-flex align-items-center"><img
-                                                src="images/logo.png" width="80" style="transform: scale(.7)"
+                                                src="/images/logo.png" width="80" style="transform: scale(.7)"
                                                 alt="#" />
                                             <span style="font-size: 24px">{{ config('app.name') }}</span></a>
                                     </div>
@@ -65,9 +72,11 @@
                                                     <li class="{{ $active_menu == 'profile' ? 'active' : '' }}"> <a
                                                             href="{{ url('profile') }}">Perfil</a> </li>
                                                     @if (Auth::user()->role == 'student')
-                                                        <li> <a href="{{ url('task') }}">Tareas</a> </li>
+                                                        <li class="{{ $active_menu == 'task' ? 'active' : '' }}"> <a
+                                                                href="{{ url('task') }}">Tareas</a> </li>
                                                     @endif
-                                                    <li> <a href="{{ url('game') }}">Ejercicios</a> </li>
+                                                    <li class="{{ $active_menu == 'game' ? 'active' : '' }}"> <a
+                                                            href="{{ url('game') }}">Ejercicios</a> </li>
                                                     @if (Auth::user()->role == 'administrator' || Auth::user()->role == 'teacher')
                                                         <li> <a href="{{ url('admin') }}">Administraci&oacute;n</a> </li>
                                                     @endif
@@ -166,7 +175,7 @@
     <section>
         @yield('content')
     </section>
-    <footer>
+    <footer class="mt-auto" style="margin-top: auto">
         <div class="footer pt-5">
             <div class="container">
                 <div class="row">
@@ -195,8 +204,15 @@
                             </div>
 
                             <div class="col-lg-3 col-md-6 col-sm-6 ">
-                                <div class="address">
-                                    <a href="{{ url('/') }}"> <img src="images/logo1.jpg" alt="logo"></a>
+                                <div class="d-flex align-items-center ">
+                                    <div class="address">
+                                        <a href="{{ url('/') }}"> <img width="350"
+                                                src="{{ asset('images/logo1.jpg') }}" alt="logo"></a>
+                                    </div>
+                                    <div class="address">
+                                        <a href="{{ url('/') }}"> <img width="350"
+                                                src="{{ asset('images/etecsa.png') }}" alt="logo"></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -237,6 +253,7 @@
             }
         });
     </script>
+    @stack('js')
 </body>
 
 </html>

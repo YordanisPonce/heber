@@ -19,13 +19,17 @@ class TaskController extends Controller
 
     public function index()
     {
-        $o_all = Task::where(['status' => 'active', 'id_degree' => Auth::user()->id_degree])->get();
+        $o_all = Task::where(['status' => 'active', 'id_degree' => Auth::user()->id_degree])
+            ->whereDoesntHave('results', function ($query) {
+                $query->where('id_user', auth()->id());
+            })
+            ->get();
         $data['o_all'] = $o_all;
         $data['title'] = 'Listado de ' . $this->objNames;
         $data['objName'] = $this->objName;
         $data['objNames'] = $this->objNames;
         $data['controller'] = $this->controller;
         $data['active_menu'] = $this->cName;
-        return view($this->vUrl.'.index', $data);
+        return view($this->vUrl . '.index', $data);
     }
 }

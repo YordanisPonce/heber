@@ -24,4 +24,12 @@ class Task extends Model
     {
         return $this->belongsTo(Degree::class, 'id_degree');
     }
+
+
+    public function results()
+    {
+
+        return $this->hasMany(Result::class, 'id_task', 'id');
+    }
+
 }

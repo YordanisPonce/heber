@@ -15,6 +15,15 @@ class GameController extends Controller
         $o = Task::findOrFail($id);
         session(['id_task' => $o->id]);
         $data['o'] = $o;
+        $data['title'] = 'Juegos';
+        $data['active_menu'] = 'game';
+        return view('front.game.index', $data);
+    }
+
+    public function game()
+    {
+        $data['title'] = 'Juegos';
+        $data['active_menu'] = 'game';
         return view('front.game.index', $data);
     }
 
@@ -23,16 +32,16 @@ class GameController extends Controller
     {
         $params = $request->post();
         $params['id_user'] = Auth::user()->id;
-        if(session()->has('id_task')){
+        if (session()->has('id_task')) {
             $params['id_task'] = session()->get('id_task');
         }
         Result::create($params);
-        if(session()->has('id_task')){
+        if (session()->has('id_task')) {
             session()->forget('id_task');
         }
         return response()->json([
-                'message' => 'Se ha agregado correctamente',
-                'status' => 200
-            ]);
+            'message' => 'Se ha agregado correctamente',
+            'status' => 200
+        ]);
     }
 }

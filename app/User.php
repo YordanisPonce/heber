@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\RoleHelper;
 use App\Notifications\FamiliarNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,5 +49,10 @@ class User extends Authenticatable
         $this->familiars()->get()->each(function (Familiar $familiar) {
             $familiar->notify(new FamiliarNotification);
         });
+    }
+
+    public function isStudent()
+    {
+        return $this->role == RoleHelper::STUDENT;
     }
 }
